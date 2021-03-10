@@ -15,7 +15,7 @@
                 <!-- меню сайта -->
                 <a class="navbar-brand" href="#">Danil_Popov_1040</a>
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="labpage.html">Lab1</a>
+                    <a class="nav-item nav-link active" href="#">Lab1</a>
                     <a class="nav-item nav-link" href="#">Каталог</a>
                     <a class="nav-item nav-link" href="#">Администрирование</a>
                 </div>
@@ -48,28 +48,95 @@
             </nav> <!-- Панель навигации - конец -->
         </div><!-- container - конец -->
     </header><!-- header - конец -->
-    <main class="container">
-        Содержимое страницы
+        <main class="container">
+            <h1>Лаборатоная работа 1</h1>
+            <h2>Список</h2>
+            <ul>А.Элемент 1 списка </ul>
+            <ul>В.Элемент 2 списка</ul>
 
-    </main>
-    <footer>
-        <div class="navbar navbar-dark navbar-expand-md bg-dark">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="http://www.facebook.com">
-                    <i class="fab fa-facebook-f fa-2x"></i>
-                </a>
+            <hr />
 
-                <a class="nav-item nav-link" href="http://www.vk.com">
-                    <i class="fab fa-vk fa-2x"></i>
-                </a>
-                <a class="nav-item nav-link" href="http://www.twitter.com">
-                    <i class="fab fa-twitter fa-2x"></i>
-                </a>
+            <form role="form" method="post">
+
+                <h2>Форма</h2>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                            <label class="form-check-label" for="gridCheck1">
+                                Чек-бокс 1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1">
+                            <label class="form-check-label" for="gridCheck1">
+                                Чек-бокс 2
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0"></legend>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio1" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Радио-1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio2" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Радио-2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radio3" id="inlineRadio3" value="option3">
+                                <label class="form-check-label" for="inlineRadio3">Радио-3</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <label for="mailInput" class="col-sm-2 col-form-label">Логин:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="login" class="form-control" id="mailInput" placeholder="Введите имя">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="passInput" class="col-sm-2 col-form-label">Пароль:</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control" id="passInput" placeholder="Введите пароль">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+        <footer class="fixed">
+            <div class="navbar navbar-dark navbar-expand-md bg-dark">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="http://www.facebook.com">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+
+                    <a class="nav-item nav-link" href="http://www.vk.com">
+                        <i class="fab fa-vk fa-2x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="http://www.twitter.com">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="lib/jquery/dist/jquery.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>
