@@ -10,5 +10,6 @@ namespace Danil_Popov_1040.DAL.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public byte[] AvatarImage { get; set; }
     }
 }
