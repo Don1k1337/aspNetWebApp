@@ -4,20 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Danil_Popov_1040.DAL.Entities;
+using Danil_Popov_1040.Models;
 
 namespace Danil_Popov_1040.Controllers
 {
     public class ProductController : Controller
     {
-        List<Dish> _dishes;
+        public List<Dish> _dishes;
         List<DishGroup> _dishGroups;
+        int _pageSize;
+
         public ProductController()
         {
+            _pageSize = 3;
             SetupData();
         }
-        public IActionResult Index()
+        public IActionResult Index(int? group, int pageNo = 1)
         {
-            return View(_dishes);
+            var dishesFiltered = _dishes
+            .Where(d => !group.HasValue || d.DishGroupId == group.Value);
+            // Получить id текущей группы и поместить в TempData
+            ViewData["Groups"] = _dishGroups;
+            ViewData["CurrentGroup"] = group ?? 0;
+
+            return View(ListViewModel<Dish>.GetModel(dishesFiltered, pageNo,
+            _pageSize));
         }
         /// <summary>
         /// Инициализация списков
