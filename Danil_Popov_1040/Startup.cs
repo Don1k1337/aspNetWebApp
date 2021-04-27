@@ -8,13 +8,15 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-/*using Danil_Popov_1040.Data;*/
 using Danil_Popov_1040.DAL.Data;
 using Danil_Popov_1040.DAL.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Danil_Popov_1040.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Danil_Popov_1040.Models;
 
 namespace Danil_Popov_1040
 {
@@ -48,6 +50,16 @@ namespace Danil_Popov_1040
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddDistributedMemoryCache();
+            services.AddSession(opt =>
+            {
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.IsEssential = true;
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Cart>(sp => CartService.GetCart(sp));
         }
 
 
@@ -75,6 +87,7 @@ namespace Danil_Popov_1040
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -88,8 +101,6 @@ namespace Danil_Popov_1040
             DbInitializer.Seed(context, userManager, roleManager)
             .GetAwaiter()
             .GetResult();
-
-
         }
     }
 }

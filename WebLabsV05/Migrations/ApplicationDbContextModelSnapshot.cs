@@ -87,6 +87,50 @@ namespace Danil_Popov_1040.DAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Danil_Popov_1040.DAL.Entities.Dish", b =>
+                {
+                    b.Property<int>("DishId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Calories")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DishGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DishName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DishId");
+
+                    b.HasIndex("DishGroupId");
+
+                    b.ToTable("Dishes");
+                });
+
+            modelBuilder.Entity("Danil_Popov_1040.DAL.Entities.DishGroup", b =>
+                {
+                    b.Property<int>("DishGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GroupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DishGroupId");
+
+                    b.ToTable("DishGroups");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -216,6 +260,15 @@ namespace Danil_Popov_1040.DAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Danil_Popov_1040.DAL.Entities.Dish", b =>
+                {
+                    b.HasOne("Danil_Popov_1040.DAL.Entities.DishGroup", "DishGroup")
+                        .WithMany("Dishes")
+                        .HasForeignKey("DishGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

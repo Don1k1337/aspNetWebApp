@@ -1,4 +1,11 @@
-﻿<a asp-controller="Cart" asp-action="Index" class="navbar-text ml-auto">
+﻿@model Cart
+<a asp-controller="Cart" asp-action="Index" class="navbar-text ml-auto">
+    @Model.Calories калорий <i class="fas fa-shopping-cart nav-color"></i>
+
+    (@Model.Count)
+</a>
+@*<a asp-controller="Cart" asp-action="Index" class="navbar-text ml-auto">
     $0,00 US
     <i class="fas fa-shopping-cart nav-color"></i>
 </a>
+*@
