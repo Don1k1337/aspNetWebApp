@@ -17,14 +17,18 @@ using Danil_Popov_1040.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Danil_Popov_1040.Models;
+using Microsoft.Extensions.Logging;
+using Danil_Popov_1040.Extensions;
 
 namespace Danil_Popov_1040
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+           
         }
 
         public IConfiguration Configuration { get; }
@@ -60,16 +64,14 @@ namespace Danil_Popov_1040
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<Cart>(sp => CartService.GetCart(sp));
+            services.AddHttpClient();
         }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,
-                            IWebHostEnvironment env,
-                            ApplicationDbContext context,
-                            UserManager<ApplicationUser> userManager,
-                            RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ILoggerFactory logger)
         {
+            logger.AddFile("Logs/log-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -83,11 +85,14 @@ namespace Danil_Popov_1040
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseFileLogging();
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseSession();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -98,9 +103,7 @@ namespace Danil_Popov_1040
                 endpoints.MapRazorPages();
             });
 
-            DbInitializer.Seed(context, userManager, roleManager)
-            .GetAwaiter()
-            .GetResult();
+            DbInitializer.Seed(context, userManager, roleManager).GetAwaiter().GetResult();
         }
     }
 }
