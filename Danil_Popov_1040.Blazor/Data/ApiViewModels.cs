@@ -6,9 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Danil_Popov_1040.Blazor.Data
 {
-/*    public class ApiViewModels
-    {
-    }*/
+    /*    public class ApiViewModels
+        {
+        }*/
     public class ListViewModel
     {
         [JsonPropertyName("dishId")]

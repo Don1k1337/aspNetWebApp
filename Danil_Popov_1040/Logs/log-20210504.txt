@@ -44,3 +44,8 @@
 2021-05-04T17:11:15.8672990+06:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2021-05-04T17:11:15.9279319+06:00  [INF] Hosting environment: "Development" (c3307c92)
 2021-05-04T17:11:15.9282267+06:00  [INF] Content root path: "C:\Users\User\source\repos\Danil_Popov_1040\Danil_Popov_1040" (b5d60022)
+2021-05-04T17:33:00.9964180+06:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-05-04T17:33:01.0056451+06:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-05-04T17:33:01.0058400+06:00  [INF] Content root path: "C:\Users\User\source\repos\Danil_Popov_1040\Danil_Popov_1040" (b5d60022)
+2021-05-04T17:33:08.5761493+06:00  [INF] Request /Cart/Add/1?returnUrl=%2FCatalog returns status code 302 (6cfb108d)
+2021-05-04T17:33:12.3955946+06:00  [INF] Request /Cart/Delete/1 returns status code 302 (12c74a1f)

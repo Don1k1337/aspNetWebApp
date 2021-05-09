@@ -1,0 +1,3 @@
+2021-05-09T18:57:41.2338353+06:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-05-09T18:57:41.3609809+06:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-05-09T18:57:41.3611776+06:00  [INF] Content root path: "C:\Users\User\source\repos\Danil_Popov_1040\Danil_Popov_1040" (b5d60022)

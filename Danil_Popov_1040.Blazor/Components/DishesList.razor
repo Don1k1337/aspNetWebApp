@@ -1,4 +1,5 @@
 ﻿@using Danil_Popov_1040.Blazor.Data
+
 <h3>DishesList</h3>
 @if (Dishes == null)
 {
@@ -12,9 +13,10 @@ else
             foreach (var dish in Dishes)
             {
 
-                <button type="button" class="list-group-item list-group-
-item-action">
-
+                <button type="button"
+                        class="list-group-item list-group-item-action
+                        @(SelectedId == dish.DishId ? "active" : "")"
+                        @onclick="@(e => Selected(e, dish.DishId))">
                     @(i++) - @dish.DishName
                 </button>
             }
@@ -29,5 +31,13 @@ item-action">
     public EventCallback<IEnumerable<ListViewModel>> DishesChanged
     {
         get; set;
+    }
+    private int SelectedId = 0;
+    [Parameter]
+    public EventCallback<int> SelectedObjectChanged { get; set; }
+    private void Selected(MouseEventArgs e, int id)
+    {
+        SelectedId = id;
+        SelectedObjectChanged.InvokeAsync(id);
     }
 }

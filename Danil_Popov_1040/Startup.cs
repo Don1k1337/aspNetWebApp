@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 using Danil_Popov_1040.Models;
 using Microsoft.Extensions.Logging;
 using Danil_Popov_1040.Extensions;
+using Microsoft.Net.Http.Headers;
 
 namespace Danil_Popov_1040
 {
@@ -83,6 +84,10 @@ namespace Danil_Popov_1040
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseCors(policy =>
+               policy.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .WithHeaders(HeaderNames.ContentType));
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseFileLogging();
